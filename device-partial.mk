@@ -13,9 +13,9 @@
 # limitations under the License.
 
 # Qualcomm blob(s) necessary for Hammerhead hardware
+#    vendor/qcom/hammerhead/proprietary/TimeService.apk:system/app/TimeService.apk:qcom 
+#    vendor/qcom/hammerhead/proprietary/shutdownlistener.apk:system/app/shutdownlistener.apk:qcom 
 PRODUCT_COPY_FILES := \
-    vendor/qcom/hammerhead/proprietary/TimeService.apk:system/app/TimeService.apk:qcom \
-    vendor/qcom/hammerhead/proprietary/shutdownlistener.apk:system/app/shutdownlistener.apk:qcom \
     vendor/qcom/hammerhead/proprietary/bridgemgrd:system/bin/bridgemgrd:qcom \
     vendor/qcom/hammerhead/proprietary/diag_klog:system/bin/diag_klog:qcom \
     vendor/qcom/hammerhead/proprietary/diag_mdlog:system/bin/diag_mdlog:qcom \
@@ -171,4 +171,6 @@ PRODUCT_COPY_FILES := \
     vendor/qcom/hammerhead/proprietary/libsensor_user_cal.so:system/vendor/lib/libsensor_user_cal.so:qcom \
     vendor/qcom/hammerhead/proprietary/libtime_genoff.so:system/vendor/lib/libtime_genoff.so:qcom \
     vendor/qcom/hammerhead/proprietary/libTimeService.so:system/vendor/lib/libTimeService.so:qcom \
+
+PRODUCT_PACKAGES += $(foreach fpath,$(shell ls vendor/qcom/hammerhead/proprietary/*.apk),$(basename $(notdir $(fpath))))
 
